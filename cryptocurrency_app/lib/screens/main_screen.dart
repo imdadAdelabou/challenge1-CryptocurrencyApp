@@ -16,6 +16,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   String chart = "";
   String seeAll = "";
+  int nbMax = 11;
   NetworkHelper networkHelper = NetworkHelper(url: SERVER_IP);
   @override
   void initState() {
@@ -90,18 +91,29 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ],
             ),
-            Column(
-              children: [
-                TakeCoins(),
-                SizedBox(height: 10.0),
-                Padding(
-                  padding: const EdgeInsets.only(right: 30.0),
-                  child: Divider(
-                    thickness: 1.0,
-                  ),
-                ),
-              ],
+            Expanded(
+              child: ListView.builder(
+                itemCount: nbMax,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      TakeCoins(),
+                      SizedBox(height: 10.0),
+                      Visibility(
+                        visible: index != nbMax - 1,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 30.0),
+                          child: Divider(
+                            thickness: 1.0,
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
+            SizedBox(height: 20.0),
             // ElevatedButton(
             //   onPressed: () async {
             //     try {
