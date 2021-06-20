@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 
+String SERVER_IP = "https://coingeckoapimd.herokuapp.com";
+
 Map<String, dynamic> device = {
   "dollar": [
     Color(0xffad7efd),

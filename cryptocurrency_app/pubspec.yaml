@@ -32,7 +32,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  font_awesome_flutter: ^9.1.0  
+  font_awesome_flutter: ^9.1.0
+  http: ^0.13.3
+  cached_network_image: ^3.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
