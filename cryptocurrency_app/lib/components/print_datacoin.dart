@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PrintDataCoin extends StatefulWidget {
   final Color containerColor;
@@ -9,12 +10,14 @@ class PrintDataCoin extends StatefulWidget {
   final double coinPriceDevice;
   final double coinPrice;
   final Color lineColor;
+  final String pathsImg;
   PrintDataCoin({
     required this.containerColor,
     required this.symbolCoin,
     required this.coinPriceDevice,
     required this.coinPrice,
     required this.lineColor,
+    required this.pathsImg,
   });
 
   @override
@@ -50,10 +53,10 @@ class _PrintDataCoinState extends State<PrintDataCoin> {
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0),
                   child: Text(
-                    widget.symbolCoin,
+                    widget.symbolCoin.toUpperCase(),
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
+                      fontSize: 17.0,
                     ),
                   ),
                 ),
@@ -69,7 +72,7 @@ class _PrintDataCoinState extends State<PrintDataCoin> {
               padding:
                   const EdgeInsets.only(left: 15.0, top: 10.0, right: 10.0),
               child: Container(
-                width: 145.0,
+                width: 120.0,
                 height: 40.0,
                 child: LineChart(
                   LineChartData(
@@ -114,21 +117,34 @@ class _PrintDataCoinState extends State<PrintDataCoin> {
             ),
             Spacer(),
             Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(
+                top: 10.0,
+                left: 10.0,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(
-                    widget.coinPriceDevice.toString(),
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0,
-                    ),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        FontAwesomeIcons.dollarSign,
+                        size: 17,
+                      ),
+                      Text(
+                        widget.coinPriceDevice.toString(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.0,
+                        ),
+                      ),
+                    ],
                   ),
                   Text(
-                    "${widget.coinPrice.toString()} ${widget.symbolCoin}",
+                    "${widget.coinPrice.toString()} ${widget.symbolCoin.toUpperCase()}",
                     style: TextStyle(
                       color: Colors.grey,
+                      fontSize: 10.0,
                     ),
                   ),
                 ],

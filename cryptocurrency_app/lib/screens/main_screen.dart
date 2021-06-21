@@ -1,10 +1,14 @@
+import 'dart:convert';
+
 import 'package:cryptocurrency_app/components/ballance_card.dart';
 import 'package:cryptocurrency_app/components/print_datacoin.dart';
+import 'package:cryptocurrency_app/models/coin.dart';
 import 'package:cryptocurrency_app/screens/take_coins.dart';
 import 'package:cryptocurrency_app/utilities/network_helper.dart';
 import "package:flutter/material.dart";
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import "../utilities/constant.dart";
+import "package:http/http.dart" as http;
 
 class MainScreen extends StatefulWidget {
   MainScreen({Key? key}) : super(key: key);
@@ -18,11 +22,26 @@ class _MainScreenState extends State<MainScreen> {
   String seeAll = "";
   int nbMax = 11;
   NetworkHelper networkHelper = NetworkHelper(url: SERVER_IP);
+  late Future<dynamic> dataCoin;
+
   @override
   void initState() {
     super.initState();
     chart = "Charts";
     seeAll = "See All";
+    dataCoin = getData();
+  }
+
+  Future<dynamic> getData() async {
+    try {
+      var response = await networkHelper.getData("/coins/all-data");
+      if (response != null) {
+        return response["body"];
+      }
+    } catch (e) {
+      print(e);
+      return;
+    }
   }
 
   @override
@@ -92,37 +111,68 @@ class _MainScreenState extends State<MainScreen> {
               ],
             ),
             Expanded(
-              child: ListView.builder(
-                itemCount: nbMax,
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      TakeCoins(),
-                      SizedBox(height: 10.0),
-                      Visibility(
-                        visible: index != nbMax - 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 30.0),
-                          child: Divider(
-                            thickness: 1.0,
-                          ),
-                        ),
-                      ),
-                    ],
-                  );
-                },
-              ),
+              child: FutureBuilder(
+                  future: dataCoin,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      if (snapshot.hasError) {
+                        return Text("${snapshot.hasError}");
+                      } else if (snapshot.hasData) {
+                        List<dynamic> data = snapshot.data as List<dynamic>;
+
+                        return ListView.builder(
+                          itemCount: nbMax,
+                          itemBuilder: (context, index) {
+                            Map<String, dynamic> market_data =
+                                data[index]["market_data"];
+                            print(data[2]);
+                            return Column(
+                              children: [
+                                TakeCoins(
+                                  coin: Coin(
+                                    id: data[index]["id"],
+                                    symbol: data[index]["symbol"],
+                                    name: data[index]["name"],
+                                    blockTimeInMinutes: data[index]
+                                                ["block_time_in_minutes"] !=
+                                            null
+                                        ? double.parse(data[index]
+                                            ["block_time_in_minutes"])
+                                        : 0.0,
+                                    pathsImage: data[index]["image"],
+                                    coinPrice: double.parse(
+                                        market_data["current_price"]["btc"]
+                                            .toString()),
+                                    marketData: data[index]["market_data"],
+                                    priceDevice: double.parse(
+                                      market_data["current_price"]["usd"]
+                                          .toString(),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 10.0),
+                                Visibility(
+                                  visible: index != nbMax - 1,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 30.0),
+                                    child: Divider(
+                                      thickness: 1.0,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      }
+                    }
+                    return Text("Waiting");
+                  }),
             ),
             SizedBox(height: 20.0),
             // ElevatedButton(
             //   onPressed: () async {
-            //     try {
-            //       var response = await networkHelper.getData("/coins/all-data");
-            //       print(response);
-            //     } catch (e) {
-            //       print(e);
-            //     }
-            //   },
+            //
             //   child: Text("Get Button"),
             // ),
           ],
