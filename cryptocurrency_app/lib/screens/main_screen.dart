@@ -152,7 +152,7 @@ class _MainScreenState extends State<MainScreen> {
                                 ),
                                 SizedBox(height: 10.0),
                                 Visibility(
-                                  visible: index != nbMax - 1,
+                                  visible: !(index == 10), //&& index != 0,
                                   child: Padding(
                                     padding: const EdgeInsets.only(right: 30.0),
                                     child: Divider(
@@ -170,13 +170,26 @@ class _MainScreenState extends State<MainScreen> {
                   }),
             ),
             SizedBox(height: 20.0),
-            // ElevatedButton(
-            //   onPressed: () async {
-            //
-            //   child: Text("Get Button"),
-            // ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        showUnselectedLabels: false,
+        showSelectedLabels: false,
+        items: [
+          BottomNavigationBarItem(
+            label: "Accueil",
+            icon: Icon(FontAwesomeIcons.bars),
+          ),
+          BottomNavigationBarItem(
+            label: "User",
+            icon: Icon(FontAwesomeIcons.syncAlt),
+          ),
+          BottomNavigationBarItem(
+            label: "User",
+            icon: Icon(FontAwesomeIcons.user),
+          ),
+        ],
       ),
     );
   }

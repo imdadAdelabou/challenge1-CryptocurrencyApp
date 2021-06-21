@@ -18,6 +18,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       theme: ThemeData(
         primaryColor: Color(0xffe9877b),
+        accentColor: Colors.orange,
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          selectedItemColor: Colors.orange,
+        ),
       ),
       home: MainScreen(),
       debugShowCheckedModeBanner: false,

@@ -40,12 +40,11 @@ class _PrintDataCoinState extends State<PrintDataCoin> {
                 color: widget.containerColor,
                 borderRadius: BorderRadius.circular(10.0),
               ),
-              // child: CachedNetworkImage(
-              //   imageUrl:
-              //       "https://toppng.com/uploads/preview/bitcoin-png-bitcoin-logo-transparent-background-11562933997uxok6gcqjp.png",
-              //   placeholder: (context, url) => CircularProgressIndicator(),
-              //   errorWidget: (context, url, error) => Icon(Icons.error),
-              // ),
+              child: CachedNetworkImage(
+                imageUrl: widget.pathsImg,
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
             ),
             SizedBox(width: 15.0),
             Column(

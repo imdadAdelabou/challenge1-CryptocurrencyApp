@@ -13,7 +13,7 @@ class TakeCoins extends StatelessWidget {
       coinPriceDevice: coin.priceDevice,
       coinPrice: coin.coinPrice,
       lineColor: Colors.orange,
-      pathsImg: "",
+      pathsImg: coin.pathsImage["small"],
     );
   }
 }
