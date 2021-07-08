@@ -13,3 +13,5 @@ Please star⭐ the repo if you like what you see😉.
 ## 📸 ScreenShots
 
 ## 🔌 Plugins
+
+## What's Next?
