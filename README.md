@@ -6,5 +6,5 @@ Finally the app gives the possibility to check the total balance of a user in di
 <br>
 Please star⭐ the repo if you like what you see😉.
 <br>
-##💻 ✨ Requirements
+## 💻 ✨ Requirements
 
