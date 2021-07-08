@@ -4,7 +4,7 @@ All transactions (purchase, exchange, withdrawal) are done using MOBILE MONEY [F
 Finally the app gives the possibility to check the total balance of a user in different devices.<br>
 ### Made with ❤️ using flutter and dart.
 <a href="#"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" width="200"></img></a>
-<a href="#"><img src="https://freeiconshop.com/wp-content/uploads/edd/app-store-badge-128x128.png" width="200"/></a>
+<a href="#"><img src="https://freeiconshop.com/wp-content/uploads/edd/app-store-badge-128x128.png" width="50"/></a>
 <br>
 Please star⭐ the repo if you like what you see😉.
 <br>
