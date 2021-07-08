@@ -12,6 +12,9 @@ Please star⭐ the repo if you like what you see😉.
 
 ## 📸 ScreenShots
 
-## 🔌 Plugins
+## 🔌 Plugins, resources and more
 
 ## What's Next?
+
+## 🤓 Author(s)
+**Imdad Adelabou** [![Twitter Follow](https://img.shields.io/twitter/follow/IAdelabou?style=social)](https://twitter.com/IAdelabou?s=09)
