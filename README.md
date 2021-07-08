@@ -8,3 +8,4 @@ Please star⭐ the repo if you like what you see😉.
 <br>
 ## 💻 ✨ Requirements
 
+## 🤳💫✨ Features
