@@ -11,3 +11,5 @@ Please star⭐ the repo if you like what you see😉.
 ## 🤳💫✨ Features
 
 ## 📸 ScreenShots
+
+## 🔌 Plugins
