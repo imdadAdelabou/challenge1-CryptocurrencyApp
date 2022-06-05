@@ -18,4 +18,4 @@ Please star⭐ the repo if you like what you see😉.
 ## What's Next?
 
 ## 😇 Author(s)
-**Imdad Adelabou** [![Twitter Follow](https://img.shields.io/twitter/follow/IAdelabou?style=social)](https://twitter.com/IAdelabou?s=09)
+**Imdad Adelabou** [![Twitter Follow](https://img.shields.io/twitter/follow/imdad_tech?style=social)](https://twitter.com/imdad_tech?s=09)
